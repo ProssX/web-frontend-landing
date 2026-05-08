@@ -66,10 +66,16 @@ export default function Problema() {
     tl.to(cardRefs.current[1], { opacity: 0, duration: CROSSFADE_VH, ease: 'power2.inOut' }, t2)
     tl.to(cardRefs.current[2], { opacity: 1, duration: CROSSFADE_VH, ease: 'power2.inOut' }, t2)
 
+    // Extender el pin por exactamente 1 viewport de scroll al final:
+    // durante ese tramo Solucion sube en flujo normal sin transiciones JS.
+    // ACOPLAMIENTO: este valor debe coincidir con marginTop: -100vh de Solucion.tsx.
+    const slideScroll = window.innerHeight
+    tl.to({}, { duration: slideScroll })
+
     ScrollTrigger.create({
       trigger: sectionRef.current,
       start: 'top top',
-      end: `+=${TOTAL_VH}vh`,
+      end: `+=${TOTAL_VH + slideScroll}vh`,
       scrub: 1.2,
       pin: true,
       animation: tl,
@@ -81,7 +87,7 @@ export default function Problema() {
       ref={sectionRef}
       id="problema"
       className="section-light"
-      style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingBlock: '4rem' }}
+      style={{ position: 'relative', zIndex: 1, minHeight: '100vh', display: 'flex', alignItems: 'center', paddingBlock: '4rem' }}
     >
       <div
         className="container"

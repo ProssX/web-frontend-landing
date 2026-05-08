@@ -70,7 +70,10 @@ export default function Solucion() {
           color: 'var(--color-text-dark)',
           paddingBlock: '5.5rem',
           overflow: 'hidden',
-          borderTop: '1px solid rgba(233,225,255,0.06)',
+          // ACOPLAMIENTO: debe coincidir con slideScroll = window.innerHeight en Problema.tsx.
+          marginTop: '-100vh',
+          borderRadius: '1rem 1rem 0 0',
+          boxShadow: '0 -24px 64px rgba(0,0,0,0.45)',
         }}
       >
         {/* ── Ambient background glows ── */}
