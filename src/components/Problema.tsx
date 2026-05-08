@@ -87,7 +87,7 @@ export default function Problema() {
       ref={sectionRef}
       id="problema"
       className="section-light"
-      style={{ position: 'relative', zIndex: 1, minHeight: '100vh', display: 'flex', alignItems: 'center', paddingBlock: '4rem' }}
+      style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingBlock: '4rem' }}
     >
       <div
         className="container"
