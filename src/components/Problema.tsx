@@ -10,7 +10,7 @@ const CARD_HOLD_VH = 200  // ← ajustá esto para cambiar cuánto tiempo queda 
 const CROSSFADE_VH = 80   // duración de la transición entre cards (vh)
 
 // Total del scroll: fade + (hold × 3 cards) + (crossfade × 2 transiciones)
-export const TOTAL_VH = FADE_VH + CARD_HOLD_VH * 3 + CROSSFADE_VH * 2
+const TOTAL_VH = FADE_VH + CARD_HOLD_VH * 3 + CROSSFADE_VH * 2
 
 const TL_VIOLET = '#8B78F0'
 const TL_GRAY   = '#CCCAC7'
@@ -71,6 +71,7 @@ export default function Problema() {
       start: 'top top',
       end: `+=${TOTAL_VH}vh`,
       scrub: 1.2,
+      pin: true,
       animation: tl,
     })
   }, { scope: sectionRef })
@@ -80,7 +81,7 @@ export default function Problema() {
       ref={sectionRef}
       id="problema"
       className="section-light"
-      style={{ position: 'sticky', top: 0, zIndex: 1, minHeight: '100vh', display: 'flex', alignItems: 'center', paddingBlock: '4rem' }}
+      style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingBlock: '4rem' }}
     >
       <div
         className="container"
