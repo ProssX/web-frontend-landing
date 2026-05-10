@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Problema from './components/Problema'
 import Solucion from './components/Solucion'
 import ComoFunciona from './components/ComoFunciona'
+import PorQueProocess from './components/PorQueProocess'
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <Problema />
       <Solucion />
       <ComoFunciona />
+      <PorQueProocess />
     </>
   )
 }
