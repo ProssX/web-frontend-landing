@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const FADE_VH      = 80   // duración del fade del logo (vh)
-const CARD_HOLD_VH = 200  // ← ajustá esto para cambiar cuánto tiempo queda cada card
+const CARD_HOLD_VH = 350  // ← ajustá esto para cambiar cuánto tiempo queda cada card
 const CROSSFADE_VH = 80   // duración de la transición entre cards (vh)
 
 // Total del scroll: fade + (hold × 3 cards) + (crossfade × 2 transiciones)
