@@ -132,7 +132,7 @@ export default function PorQueProocess() {
             </span>
 
             <h2 style={{
-              fontFamily: 'Syne, sans-serif',
+              fontFamily: 'var(--font-display)',
               fontSize: 'clamp(1.875rem, 3.5vw, 2.875rem)',
               fontWeight: 700,
               lineHeight: 1.1,
@@ -199,7 +199,7 @@ export default function PorQueProocess() {
                   }}>
                     <span style={{
                       display: 'block',
-                      fontFamily: 'Syne, sans-serif',
+                      fontFamily: 'var(--font-display)',
                       fontSize: '0.9375rem', fontWeight: 700,
                       color: 'var(--color-primary)',
                       letterSpacing: '-0.01em',
@@ -284,7 +284,7 @@ export default function PorQueProocess() {
                   style={{
                     flex: 1,
                     padding: '0.625rem 0.75rem',
-                    fontFamily: 'Inter, system-ui, sans-serif',
+                    fontFamily: 'var(--font-family)',
                     fontSize: '0.8125rem',
                     fontWeight: 600,
                     color: activeTab === tab ? 'var(--color-text)' : 'rgba(var(--color-ink-rgb), 0.3)',
@@ -332,7 +332,7 @@ export default function PorQueProocess() {
                       <span style={{
                         display: 'block',
                         paddingTop: '0.875rem',
-                        fontFamily: 'Syne, sans-serif',
+                        fontFamily: 'var(--font-display)',
                         fontSize: '0.875rem', fontWeight: 700,
                         color: 'var(--color-primary)',
                         textTransform: 'none',

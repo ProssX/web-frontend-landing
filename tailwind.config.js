@@ -33,8 +33,10 @@ export default {
         },
       },
       fontFamily: {
-        sans:    ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Syne', 'Inter', 'system-ui', 'sans-serif'],
+        sans:         ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display:      ['Reddit Sans', 'system-ui', 'sans-serif'],
+        'display-em': ['Fraunces', 'Georgia', 'serif'],
+        brand:        ['Tipografia Proocess', 'Reddit Sans', 'sans-serif'],
       },
       borderRadius: {
         xs:   '0.25rem',
