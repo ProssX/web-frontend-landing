@@ -4,6 +4,7 @@ import Problema from './components/Problema'
 import Solucion from './components/Solucion'
 import ComoFunciona from './components/ComoFunciona'
 import PorQueProocess from './components/PorQueProocess'
+import CTAForm from './components/CTAForm'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Solucion />
       <ComoFunciona />
       <PorQueProocess />
+      <CTAForm />
     </>
   )
 }
