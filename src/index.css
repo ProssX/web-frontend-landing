@@ -23,12 +23,15 @@
   --color-surface:    #FFFCFA;
   --color-text:       #1A1E23;
   --color-text-muted: #27323B;
-  --color-text-soft:  #5a6470;
+  --color-text-soft:  rgba(26, 30, 35, 0.5);
 
   /* Modo noche */
   --color-bg-dark:      #1A1E23;
   --color-surface-dark: #27323B;
   --color-text-dark:    #F7F5F2;
+
+  /* Especial */
+  --color-video-bg: #111518;
 
   /* Apoyos */
   --color-accent-blue:     #C7E7F2;
@@ -44,6 +47,23 @@
   --shadow-md:    0 4px 12px rgba(26, 30, 35, 0.06);
   --shadow-lg:    0 12px 32px rgba(26, 30, 35, 0.08);
   --shadow-coral: 0 6px 28px rgba(249, 80, 104, 0.30);
+
+  /* RGB splits — para rgba() sin hardcodear valores en componentes */
+  --color-primary-rgb:         249, 80, 104;
+  --color-ink-rgb:             26, 30, 35;
+  --color-cream-rgb:           247, 245, 242;
+  --color-surface-rgb:         255, 252, 250;
+  --color-surface-dark-rgb:    39, 50, 59;
+  --color-accent-blue-rgb:     199, 231, 242;
+  --color-accent-lavender-rgb: 233, 225, 255;
+
+  /* Estados funcionales (feedback de UI, fuera del sistema identitario) */
+  --color-status-positive-bg:   rgba(16, 185, 129, 0.10);
+  --color-status-positive-text: #047857;
+  --color-status-warning-bg:    rgba(217, 119, 6, 0.10);
+  --color-status-warning-text:  #92400E;
+  --color-status-negative-bg:   rgba(239, 68, 68, 0.10);
+  --color-status-negative-text: #DC2626;
 
   /* Tipografía */
   --font-family:  'Inter', system-ui, -apple-system, sans-serif;
@@ -118,14 +138,14 @@
 
   .btn-primary {
     background: var(--color-primary);
-    color: #FFFCFA;
+    color: var(--color-surface);
     padding: 0.75rem 1.5rem;
     box-shadow: var(--shadow-coral);
   }
 
   .btn-primary:hover {
     opacity: 1;
-    box-shadow: 0 8px 32px rgba(249, 80, 104, 0.40);
+    box-shadow: 0 8px 32px rgba(var(--color-primary-rgb), 0.40);
   }
 
   .btn-ghost {

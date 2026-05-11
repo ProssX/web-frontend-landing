@@ -17,9 +17,9 @@ const ROWS: {
 ]
 
 const BADGE: Record<Rating, { bg: string; color: string; icon: string }> = {
-  pos: { bg: 'rgba(52,211,153,0.12)',  color: '#6EE7B7', icon: '✓' },
-  mid: { bg: 'rgba(251,191,36,0.12)',  color: '#FCD34D', icon: '~' },
-  neg: { bg: 'rgba(239,68,68,0.10)',   color: '#EF4444', icon: '✗' },
+  pos: { bg: 'var(--color-status-positive-bg)',   color: 'var(--color-status-positive-text)', icon: '✓' },
+  mid: { bg: 'var(--color-status-warning-bg)',    color: 'var(--color-status-warning-text)',  icon: '~' },
+  neg: { bg: 'var(--color-status-negative-bg)',   color: 'var(--color-status-negative-text)', icon: '✗' },
 }
 
 function Badge({ type, children }: { type: Rating; children: string }) {
@@ -47,9 +47,9 @@ const TABS: Record<TabKey, { label: string; sub: string }> = {
   bpm:  { label: 'Software BPM', sub: 'de modelado' },
 }
 
-const PROOCESS_BG     = 'rgba(199,231,242,0.06)'
-const PROOCESS_BORDER = 'rgba(199,231,242,0.22)'
-const PROOCESS_ACCENT = '#C7E7F2'
+const PROOCESS_BG     = 'rgba(var(--color-accent-blue-rgb), 0.35)'
+const PROOCESS_BORDER = 'rgba(var(--color-ink-rgb), 0.12)'
+const PROOCESS_ACCENT = 'var(--color-accent-blue)'
 
 export default function PorQueProocess() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -75,7 +75,7 @@ export default function PorQueProocess() {
     <>
       <style>{`
         #porque-proocess {
-          --pq-row-sep: rgba(247,245,242,0.06);
+          --pq-row-sep: rgba(var(--color-ink-rgb), 0.07);
         }
         #porque-proocess .pq-header,
         #porque-proocess .pq-row {
@@ -107,8 +107,8 @@ export default function PorQueProocess() {
         style={{
           position: 'relative',
           zIndex: 4,
-          background: 'var(--color-bg-dark)',
-          color: 'var(--color-text-dark)',
+          background: 'var(--color-bg)',
+          color: 'var(--color-text)',
           paddingBlock: 'clamp(5rem, 10vw, 8rem)',
         }}
       >
@@ -120,9 +120,9 @@ export default function PorQueProocess() {
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               fontSize: '0.6875rem', fontWeight: 700,
               letterSpacing: '0.12em', textTransform: 'uppercase',
-              background: 'rgba(249,80,104,0.10)',
+              background: 'var(--color-primary-tint)',
               color: 'var(--color-primary)',
-              border: '1px solid rgba(249,80,104,0.20)',
+              border: '1px solid rgba(var(--color-primary-rgb), 0.20)',
               borderRadius: '9999px',
               padding: '0.3rem 0.9rem',
               marginBottom: '1.25rem',
@@ -144,7 +144,7 @@ export default function PorQueProocess() {
 
             <p style={{
               fontSize: '1rem', lineHeight: 1.65,
-              color: 'rgba(247,245,242,0.45)',
+              color: 'rgba(var(--color-ink-rgb), 0.5)',
               margin: 0, maxWidth: '52ch',
             }}>
               Sin configuraciones eternas ni consultores costosos. Proocess hace
@@ -174,7 +174,7 @@ export default function PorQueProocess() {
                   <th style={{
                     padding: '0 1rem 1.5rem', textAlign: 'center',
                     fontSize: '0.875rem', fontWeight: 500,
-                    color: 'rgba(247,245,242,0.38)', letterSpacing: '-0.01em',
+                    color: 'rgba(var(--color-ink-rgb), 0.4)', letterSpacing: '-0.01em',
                   }}>
                     Consultoría<br />
                     <span style={{ fontSize: '0.75rem', fontWeight: 400 }}>tradicional</span>
@@ -183,7 +183,7 @@ export default function PorQueProocess() {
                   <th style={{
                     padding: '0 1rem 1.5rem', textAlign: 'center',
                     fontSize: '0.875rem', fontWeight: 500,
-                    color: 'rgba(247,245,242,0.38)', letterSpacing: '-0.01em',
+                    color: 'rgba(var(--color-ink-rgb), 0.4)', letterSpacing: '-0.01em',
                   }}>
                     Software BPM<br />
                     <span style={{ fontSize: '0.75rem', fontWeight: 400 }}>de modelado</span>
@@ -213,9 +213,9 @@ export default function PorQueProocess() {
                       marginBottom: '1.5rem',
                       fontSize: '0.625rem', fontWeight: 700,
                       letterSpacing: '0.1em', textTransform: 'uppercase',
-                      background: 'rgba(199,231,242,0.10)',
-                      color: PROOCESS_ACCENT,
-                      border: '1px solid rgba(199,231,242,0.25)',
+                      background: 'rgba(var(--color-accent-blue-rgb), 0.5)',
+                      color: 'var(--color-text)',
+                      border: '1px solid rgba(var(--color-ink-rgb), 0.10)',
                       borderRadius: '9999px',
                       padding: '0.2rem 0.6rem',
                     }}>
@@ -240,7 +240,7 @@ export default function PorQueProocess() {
                         ...cellBase,
                         textAlign: 'left', paddingLeft: 0,
                         fontSize: '0.9375rem', fontWeight: 500,
-                        color: 'rgba(247,245,242,0.88)',
+                        color: 'rgba(var(--color-ink-rgb), 0.88)',
                         letterSpacing: '-0.01em',
                       }}>
                         {row.label}
@@ -250,11 +250,11 @@ export default function PorQueProocess() {
                       <td style={{
                         ...cellBase,
                         background: PROOCESS_BG,
-                        borderLeft: `1px solid rgba(199,231,242,0.13)`,
-                        borderRight: `1px solid rgba(199,231,242,0.13)`,
+                        borderLeft: `1px solid rgba(var(--color-accent-blue-rgb), 0.13)`,
+                        borderRight: `1px solid rgba(var(--color-accent-blue-rgb), 0.13)`,
                         borderBottom: isLast
-                          ? `2px solid rgba(199,231,242,0.28)`
-                          : '1px solid rgba(199,231,242,0.08)',
+                          ? `2px solid rgba(var(--color-accent-blue-rgb), 0.28)`
+                          : '1px solid rgba(var(--color-accent-blue-rgb), 0.08)',
                         borderRadius: isLast ? '0 0 0.5rem 0.5rem' : 0,
                       }}>
                         <Badge type={row.proocess}>{row.proocText}</Badge>
@@ -272,10 +272,10 @@ export default function PorQueProocess() {
             <div style={{
               display: 'flex', gap: '0.375rem',
               marginBottom: '1.5rem',
-              background: '#27323B',
+              background: 'rgba(var(--color-ink-rgb), 0.06)',
               borderRadius: '0.625rem',
               padding: '0.3rem',
-              border: '1px solid rgba(247,245,242,0.06)',
+              border: '1px solid rgba(var(--color-ink-rgb), 0.08)',
             }}>
               {(['trad', 'bpm'] as TabKey[]).map(tab => (
                 <button
@@ -287,8 +287,8 @@ export default function PorQueProocess() {
                     fontFamily: 'Inter, system-ui, sans-serif',
                     fontSize: '0.8125rem',
                     fontWeight: 600,
-                    color: activeTab === tab ? 'rgba(247,245,242,1)' : 'rgba(247,245,242,0.22)',
-                    background: activeTab === tab ? '#2F3D48' : 'none',
+                    color: activeTab === tab ? 'var(--color-text)' : 'rgba(var(--color-ink-rgb), 0.3)',
+                    background: activeTab === tab ? 'var(--color-surface)' : 'none',
                     border: 'none',
                     borderRadius: '0.375rem',
                     cursor: 'pointer',
@@ -313,7 +313,7 @@ export default function PorQueProocess() {
                     <th style={{
                       padding: '0 0.75rem 1.125rem', textAlign: 'center',
                       fontSize: '0.75rem', fontWeight: 600,
-                      color: 'rgba(247,245,242,0.22)',
+                      color: 'rgba(var(--color-ink-rgb), 0.4)',
                       letterSpacing: '0.04em', textTransform: 'uppercase',
                     }}>
                       {TABS[activeTab].label}<br />
@@ -346,9 +346,9 @@ export default function PorQueProocess() {
                         marginBottom: '0.75rem',
                         fontSize: '0.5625rem', fontWeight: 700,
                         letterSpacing: '0.1em', textTransform: 'uppercase',
-                        background: 'rgba(199,231,242,0.10)',
-                        color: PROOCESS_ACCENT,
-                        border: '1px solid rgba(199,231,242,0.25)',
+                        background: 'rgba(var(--color-accent-blue-rgb), 0.5)',
+                        color: 'var(--color-text)',
+                        border: '1px solid rgba(var(--color-ink-rgb), 0.10)',
                         borderRadius: '9999px',
                         padding: '0.15rem 0.5rem',
                       }}>
@@ -372,7 +372,7 @@ export default function PorQueProocess() {
                           ...cellBase,
                           textAlign: 'left', paddingLeft: 0,
                           fontSize: '0.875rem', fontWeight: 500,
-                          color: 'rgba(247,245,242,0.88)',
+                          color: 'rgba(var(--color-ink-rgb), 0.88)',
                         }}>
                           {row.label}
                         </td>
@@ -382,11 +382,11 @@ export default function PorQueProocess() {
                         <td style={{
                           ...cellBase,
                           background: PROOCESS_BG,
-                          borderLeft: `1px solid rgba(199,231,242,0.13)`,
-                          borderRight: `1px solid rgba(199,231,242,0.13)`,
+                          borderLeft: `1px solid rgba(var(--color-accent-blue-rgb), 0.13)`,
+                          borderRight: `1px solid rgba(var(--color-accent-blue-rgb), 0.13)`,
                           borderBottom: isLast
-                            ? `2px solid rgba(199,231,242,0.28)`
-                            : '1px solid rgba(199,231,242,0.08)',
+                            ? `2px solid rgba(var(--color-accent-blue-rgb), 0.28)`
+                            : '1px solid rgba(var(--color-accent-blue-rgb), 0.08)',
                           borderRadius: isLast ? '0 0 0.5rem 0.5rem' : 0,
                         }}>
                           <Badge type={row.proocess}>{row.proocText}</Badge>

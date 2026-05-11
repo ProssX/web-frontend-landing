@@ -69,27 +69,27 @@ export default function Solucion() {
         style={{
           position: 'relative',
           zIndex: 3,
-          background: 'var(--color-surface-dark)',
+          background: 'var(--color-bg-dark)',
           color: 'var(--color-text-dark)',
           paddingTop: '5.5rem',
           paddingBottom: '1.5rem',
           overflow: 'hidden',
           marginTop: '-100vh',
           borderRadius: '1.25rem 1.25rem 0 0',
-          boxShadow: '0 -20px 60px rgba(0,0,0,0.5)',
+          boxShadow: '0 -20px 60px rgba(var(--color-ink-rgb), 0.5)',
         }}
       >
         <div aria-hidden="true" style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
           background: `
-            radial-gradient(ellipse 55% 40% at 75% 30%, rgba(233,225,255,0.045) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 50% at 15% 70%, rgba(199,231,242,0.04) 0%, transparent 65%)
+            radial-gradient(ellipse 55% 40% at 75% 30%, rgba(var(--color-accent-lavender-rgb), 0.045) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 50% at 15% 70%, rgba(var(--color-accent-blue-rgb), 0.04) 0%, transparent 65%)
           `,
         }} />
 
         <div aria-hidden="true" style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          backgroundImage: `radial-gradient(circle, rgba(233,225,255,0.09) 1px, transparent 1px)`,
+          backgroundImage: `radial-gradient(circle, rgba(var(--color-accent-lavender-rgb), 0.09) 1px, transparent 1px)`,
           backgroundSize: '28px 28px',
           maskImage: 'radial-gradient(ellipse 60% 50% at 80% 40%, black 0%, transparent 70%)',
           WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 80% 40%, black 0%, transparent 70%)',
@@ -116,15 +116,15 @@ export default function Solucion() {
               alignItems: 'center', gap: '0.5rem',
               fontSize: '0.6875rem', fontWeight: 700,
               letterSpacing: '0.12em', textTransform: 'uppercase',
-              background: 'rgba(233,225,255,0.07)',
-              color: 'rgba(233,225,255,0.65)',
-              border: '1px solid rgba(233,225,255,0.11)',
+              background: 'rgba(var(--color-accent-lavender-rgb), 0.07)',
+              color: 'rgba(var(--color-accent-lavender-rgb), 0.65)',
+              border: '1px solid rgba(var(--color-accent-lavender-rgb), 0.11)',
               borderRadius: '9999px',
               padding: '0.3rem 0.9rem',
             }}>
               <span style={{
                 width: 5, height: 5, borderRadius: '50%',
-                background: 'rgba(233,225,255,0.7)', flexShrink: 0,
+                background: 'rgba(var(--color-accent-lavender-rgb), 0.7)', flexShrink: 0,
               }} />
               La solución
             </span>
@@ -142,7 +142,7 @@ export default function Solucion() {
 
             <p style={{
               fontSize: '1rem', lineHeight: 1.65,
-              color: 'rgba(247,245,242,0.42)',
+              color: 'rgba(var(--color-cream-rgb), 0.42)',
               margin: 0, maxWidth: '40ch',
             }}>
               Describís cómo trabajan, en lenguaje natural. La IA arma el proceso
@@ -150,8 +150,8 @@ export default function Solucion() {
             </p>
 
             <div style={{
-              background: 'rgba(233,225,255,0.04)',
-              border: '1px solid rgba(233,225,255,0.07)',
+              background: 'rgba(var(--color-accent-lavender-rgb), 0.04)',
+              border: '1px solid rgba(var(--color-accent-lavender-rgb), 0.07)',
               borderRadius: '0.75rem',
               padding: '1.25rem 1.375rem',
             }}>
@@ -166,7 +166,7 @@ export default function Solucion() {
                       display: 'flex', alignItems: 'flex-start',
                       gap: '0.75rem',
                       fontSize: '0.9375rem',
-                      color: 'rgba(247,245,242,0.72)',
+                      color: 'rgba(var(--color-cream-rgb), 0.72)',
                       lineHeight: 1.5,
                     }}
                   >
@@ -174,7 +174,7 @@ export default function Solucion() {
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       width: 20, height: 20, borderRadius: '50%',
                       background: 'var(--color-primary)',
-                      color: '#fff', flexShrink: 0, marginTop: 1,
+                      color: 'var(--color-surface)', flexShrink: 0, marginTop: 1,
                     }}>
                       <CheckIcon />
                     </span>
@@ -189,15 +189,15 @@ export default function Solucion() {
             <div style={{
               position: 'relative',
               borderRadius: '0.875rem',
-              background: '#111518',
-              border: '1px solid rgba(199,231,242,0.10)',
+              background: 'var(--color-video-bg)',
+              border: '1px solid rgba(var(--color-accent-blue-rgb), 0.10)',
               overflow: 'hidden',
               aspectRatio: '4 / 3',
-              boxShadow: '0 0 0 1px rgba(199,231,242,0.05)',
+              boxShadow: '0 0 0 1px rgba(var(--color-accent-blue-rgb), 0.05)',
             }}>
               <div aria-hidden="true" style={{
                 position: 'absolute', inset: 0,
-                backgroundImage: `radial-gradient(circle, rgba(233,225,255,0.07) 1px, transparent 1px)`,
+                backgroundImage: `radial-gradient(circle, rgba(var(--color-accent-lavender-rgb), 0.07) 1px, transparent 1px)`,
                 backgroundSize: '24px 24px',
               }} />
 
@@ -212,19 +212,19 @@ export default function Solucion() {
                   style={{
                     width: 58, height: 58, borderRadius: '50%',
                     background: 'var(--color-primary)',
-                    color: '#fff', border: 'none', cursor: 'pointer',
+                    color: 'var(--color-surface)', border: 'none', cursor: 'pointer',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    boxShadow: '0 0 0 10px rgba(249,80,104,0.10)',
+                    boxShadow: '0 0 0 10px var(--color-primary-tint)',
                     marginBottom: '0.375rem',
                     transition: 'transform 0.18s ease, box-shadow 0.18s ease',
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'scale(1.08)'
-                    e.currentTarget.style.boxShadow = '0 0 0 16px rgba(249,80,104,0.07)'
+                    e.currentTarget.style.boxShadow = '0 0 0 16px rgba(var(--color-primary-rgb), 0.07)'
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'scale(1)'
-                    e.currentTarget.style.boxShadow = '0 0 0 10px rgba(249,80,104,0.10)'
+                    e.currentTarget.style.boxShadow = '0 0 0 10px var(--color-primary-tint)'
                   }}
                 >
                   <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -234,13 +234,13 @@ export default function Solucion() {
 
                 <span style={{
                   fontSize: '0.8125rem', fontWeight: 600,
-                  color: 'rgba(247,245,242,0.4)',
+                  color: 'rgba(var(--color-cream-rgb), 0.4)',
                 }}>
                   Demo · 30–60s
                 </span>
                 <span style={{
                   fontSize: '0.625rem', fontWeight: 700,
-                  color: 'rgba(199,231,242,0.4)',
+                  color: 'rgba(var(--color-accent-blue-rgb), 0.4)',
                   letterSpacing: '0.1em', textTransform: 'uppercase',
                 }}>
                   Flujo completo

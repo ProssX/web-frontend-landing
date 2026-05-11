@@ -64,11 +64,11 @@ function StepCard({ step }: { step: typeof steps[number] }) {
         width: '13.5rem',
         flexShrink: 0,
         background: step.isLoop
-          ? 'rgba(249,80,104,0.04)'
-          : 'rgba(255,252,250,0.04)',
+          ? 'rgba(var(--color-primary-rgb), 0.04)'
+          : 'rgba(var(--color-surface-rgb), 0.04)',
         border: step.isLoop
-          ? '1px solid rgba(249,80,104,0.18)'
-          : '1px solid rgba(247,245,242,0.08)',
+          ? '1px solid rgba(var(--color-primary-rgb), 0.18)'
+          : '1px solid rgba(var(--color-cream-rgb), 0.08)',
         borderRadius: '0.875rem',
         padding: '1.125rem',
         display: 'flex',
@@ -82,8 +82,8 @@ function StepCard({ step }: { step: typeof steps[number] }) {
         <span style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           width: 40, height: 40, borderRadius: '0.5rem',
-          background: 'rgba(249,80,104,0.10)',
-          border: '1px solid rgba(249,80,104,0.16)',
+          background: 'var(--color-primary-tint)',
+          border: '1px solid var(--color-primary-glow)',
           color: 'var(--color-primary)',
           flexShrink: 0,
         }}>
@@ -91,7 +91,7 @@ function StepCard({ step }: { step: typeof steps[number] }) {
         </span>
         <span style={{
           fontSize: '0.625rem', fontWeight: 800,
-          color: 'rgba(249,80,104,0.5)',
+          color: 'rgba(var(--color-primary-rgb), 0.5)',
           letterSpacing: '0.06em',
         }}>
           {step.number}
@@ -102,7 +102,7 @@ function StepCard({ step }: { step: typeof steps[number] }) {
         <h3 style={{
           margin: 0,
           fontSize: '0.8125rem', fontWeight: 700,
-          color: '#F7F5F2',
+          color: 'var(--color-text-dark)',
           lineHeight: 1.3, letterSpacing: '-0.015em',
         }}>
           {step.title}
@@ -110,7 +110,7 @@ function StepCard({ step }: { step: typeof steps[number] }) {
         <p style={{
           margin: 0,
           fontSize: '0.75rem',
-          color: 'rgba(247,245,242,0.42)',
+          color: 'rgba(var(--color-cream-rgb), 0.42)',
           lineHeight: 1.55,
         }}>
           {step.desc}
@@ -124,8 +124,8 @@ function StepCard({ step }: { step: typeof steps[number] }) {
           fontSize: '0.5625rem', fontWeight: 700,
           letterSpacing: '0.04em',
           color: 'var(--color-primary)',
-          background: 'rgba(249,80,104,0.08)',
-          border: '1px solid rgba(249,80,104,0.18)',
+          background: 'rgba(var(--color-primary-rgb), 0.08)',
+          border: '1px solid rgba(var(--color-primary-rgb), 0.18)',
           borderRadius: '9999px',
           padding: '0.2rem 0.55rem',
           marginTop: '0.125rem',
@@ -191,8 +191,8 @@ export default function ComoFunciona() {
         }
 
         @keyframes dot-pulse {
-          0%, 22%   { width: 20px; background: #F95068; border-radius: 4px; }
-          28%, 100% { width: 6px;  background: rgba(247,245,242,0.18); border-radius: 50%; }
+          0%, 22%   { width: 20px; background: var(--color-primary); border-radius: 4px; }
+          28%, 100% { width: 6px;  background: rgba(var(--color-cream-rgb), 0.18); border-radius: 50%; }
         }
 
         #como-funciona .car-track {
@@ -226,7 +226,7 @@ export default function ComoFunciona() {
         /* Progress dots — one per step, synced with 16s animation */
         #como-funciona .prog-dot {
           height: 6px; border-radius: 50%;
-          background: rgba(247,245,242,0.18);
+          background: rgba(var(--color-cream-rgb), 0.18);
         }
         #como-funciona .prog-dot:nth-child(1) { animation: dot-pulse 16s linear infinite 0s;   width: 6px; }
         #como-funciona .prog-dot:nth-child(2) { animation: dot-pulse 16s linear infinite 4s;   width: 6px; }
@@ -240,7 +240,7 @@ export default function ComoFunciona() {
         style={{
           position: 'relative',
           zIndex: 4,
-          background: 'var(--color-surface-dark)',
+          background: 'var(--color-bg-dark)',
           color: 'var(--color-text-dark)',
           paddingTop: '1.5rem',
           paddingBottom: '5.5rem',
@@ -264,9 +264,9 @@ export default function ComoFunciona() {
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
               fontSize: '0.6875rem', fontWeight: 700,
               letterSpacing: '0.12em', textTransform: 'uppercase',
-              background: 'rgba(249,80,104,0.07)',
+              background: 'rgba(var(--color-primary-rgb), 0.07)',
               color: 'var(--color-primary)',
-              border: '1px solid rgba(249,80,104,0.14)',
+              border: '1px solid rgba(var(--color-primary-rgb), 0.14)',
               borderRadius: '9999px',
               padding: '0.3rem 0.9rem',
             }}>
@@ -290,7 +290,7 @@ export default function ComoFunciona() {
 
             <p style={{
               fontSize: '1rem',
-              color: 'rgba(247,245,242,0.5)',
+              color: 'rgba(var(--color-cream-rgb), 0.5)',
               lineHeight: 1.6,
               margin: 0,
               maxWidth: '46ch',

@@ -65,7 +65,7 @@ export default function Hero() {
           aria-hidden="true"
           className="pointer-events-none absolute -top-[10%] -left-[5%] w-[60%] h-[80%]"
           style={{
-            background: 'radial-gradient(ellipse at 20% 30%, rgba(249,80,104,0.09) 0%, transparent 60%)',
+            background: 'radial-gradient(ellipse at 20% 30%, rgba(var(--color-primary-rgb), 0.09) 0%, transparent 60%)',
           }}
         />
 
@@ -85,7 +85,7 @@ export default function Hero() {
 
           <p
             className="max-w-sm text-sm leading-relaxed"
-            style={{ color: 'rgba(247,245,242,0.45)' }}
+            style={{ color: 'rgba(var(--color-cream-rgb), 0.45)' }}
           >
             Proocess convierte el conocimiento de tu equipo en procesos claros y ejecutables.
             Sin consultoría, sin manuales que nadie lee.
@@ -105,10 +105,10 @@ export default function Hero() {
       >
         <div className="container">
           <div style={{
-            border: '1px solid rgba(247,245,242,0.08)',
+            border: '1px solid rgba(var(--color-cream-rgb), 0.08)',
             borderRadius: '0.75rem',
             overflow: 'hidden',
-            background: 'rgba(39,50,59,0.35)',
+            background: 'rgba(var(--color-surface-dark-rgb), 0.35)',
           }}>
             {/* Chrome bar */}
             <div style={{
@@ -116,19 +116,19 @@ export default function Hero() {
               alignItems: 'center',
               gap: '0.375rem',
               padding: '0.5rem 1rem',
-              borderBottom: '1px solid rgba(247,245,242,0.06)',
+              borderBottom: '1px solid rgba(var(--color-cream-rgb), 0.06)',
             }}>
               <span style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--color-primary)', display: 'block', flexShrink: 0 }} />
-              <span style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(247,245,242,0.1)', display: 'block', flexShrink: 0 }} />
-              <span style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(247,245,242,0.1)', display: 'block', flexShrink: 0 }} />
-              <span style={{ marginLeft: 'auto', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.06em', color: 'rgba(247,245,242,0.25)' }}>
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(var(--color-cream-rgb), 0.1)', display: 'block', flexShrink: 0 }} />
+              <span style={{ width: 9, height: 9, borderRadius: '50%', background: 'rgba(var(--color-cream-rgb), 0.1)', display: 'block', flexShrink: 0 }} />
+              <span style={{ marginLeft: 'auto', fontSize: '0.6875rem', fontWeight: 500, letterSpacing: '0.06em', color: 'rgba(var(--color-cream-rgb), 0.25)' }}>
                 proocess · demo
               </span>
             </div>
             {/* Área de video */}
             <div style={{
               aspectRatio: '16 / 9',
-              background: 'rgba(26,30,35,0.65)',
+              background: 'rgba(var(--color-ink-rgb), 0.65)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -141,8 +141,8 @@ export default function Hero() {
                   width: 52,
                   height: 52,
                   borderRadius: '50%',
-                  border: '1px solid rgba(249,80,104,0.4)',
-                  background: 'rgba(249,80,104,0.12)',
+                  border: '1px solid rgba(var(--color-primary-rgb), 0.4)',
+                  background: 'rgba(var(--color-primary-rgb), 0.12)',
                   color: 'var(--color-primary)',
                   display: 'flex',
                   alignItems: 'center',
@@ -150,17 +150,17 @@ export default function Hero() {
                   cursor: 'pointer',
                   transition: 'background 0.15s ease',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(249,80,104,0.22)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'rgba(249,80,104,0.12)')}
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(var(--color-primary-rgb), 0.22)')}
+                onMouseLeave={e => (e.currentTarget.style.background = 'rgba(var(--color-primary-rgb), 0.12)')}
               >
                 <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
                   <path d="M9 6.5v15l12-7.5L9 6.5z" fill="currentColor" />
                 </svg>
               </button>
-              <span style={{ fontSize: '0.8125rem', color: 'rgba(247,245,242,0.35)', letterSpacing: '0.04em' }}>
+              <span style={{ fontSize: '0.8125rem', color: 'rgba(var(--color-cream-rgb), 0.35)', letterSpacing: '0.04em' }}>
                 Demo del producto
               </span>
-              <span style={{ fontSize: '0.6875rem', color: 'rgba(247,245,242,0.18)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.6875rem', color: 'rgba(var(--color-cream-rgb), 0.18)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                 Loop 8–15s · Hero principal
               </span>
             </div>

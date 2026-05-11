@@ -12,8 +12,8 @@ const CROSSFADE_VH = 80   // duración de la transición entre cards (vh)
 // Total del scroll: fade + (hold × 3 cards) + (crossfade × 2 transiciones)
 const TOTAL_VH = FADE_VH + CARD_HOLD_VH * 3 + CROSSFADE_VH * 2
 
-const TL_VIOLET = '#8B78F0'
-const TL_GRAY   = '#CCCAC7'
+const TL_ACTIVE = 'var(--color-primary)'
+const TL_BASE   = 'rgba(var(--color-ink-rgb), 0.18)'
 
 const cards = [
   {
@@ -36,7 +36,7 @@ const cards = [
 export default function Problema() {
   const sectionRef      = useRef<HTMLElement>(null)
   const cardRefs        = useRef<(HTMLDivElement | null)[]>([])
-  const violetLayerRef  = useRef<HTMLDivElement>(null)
+  const activeLayerRef  = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
     const logo = document.getElementById('logo-trama')
@@ -49,9 +49,9 @@ export default function Problema() {
       tl.to({}, { duration: FADE_VH })
     }
 
-    // Ola violeta: recorre el timeline de arriba a abajo de forma continua
+    // Ola activa: recorre el timeline de arriba a abajo de forma continua
     // durante todo el período de las cards (sin pausas).
-    tl.to(violetLayerRef.current, {
+    tl.to(activeLayerRef.current, {
       clipPath: 'inset(0% 0% 0% 0%)',
       duration: CARD_HOLD_VH * 3 + CROSSFADE_VH * 2,
       ease: 'none',
@@ -129,23 +129,23 @@ export default function Problema() {
           {/* Timeline vertical: ●─●─● — anclado fuera de la card */}
           <div style={{ position: 'absolute', right: 'calc(100% + 2rem)', top: 0, bottom: 0, width: 20 }}>
 
-            {/* Capa gris — base siempre visible */}
+            {/* Capa base — siempre visible */}
             <div style={{ position: 'absolute', inset: 0 }}>
-              <div style={{ position: 'absolute', top: 4, bottom: 4, left: '50%', transform: 'translateX(-50%)', width: 2, background: TL_GRAY }} />
-              <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 8, height: 8, borderRadius: '50%', background: TL_GRAY }} />
-              <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 8, height: 8, borderRadius: '50%', background: TL_GRAY }} />
-              <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 8, height: 8, borderRadius: '50%', background: TL_GRAY }} />
+              <div style={{ position: 'absolute', top: 4, bottom: 4, left: '50%', transform: 'translateX(-50%)', width: 2, background: TL_BASE }} />
+              <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 8, height: 8, borderRadius: '50%', background: TL_BASE }} />
+              <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 8, height: 8, borderRadius: '50%', background: TL_BASE }} />
+              <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 8, height: 8, borderRadius: '50%', background: TL_BASE }} />
             </div>
 
-            {/* Capa violeta — misma estructura, se revela de arriba a abajo via clip-path */}
+            {/* Capa activa — se revela de arriba a abajo via clip-path */}
             <div
-              ref={violetLayerRef}
+              ref={activeLayerRef}
               style={{ position: 'absolute', inset: 0, clipPath: 'inset(0% 0% 100% 0%)' }}
             >
-              <div style={{ position: 'absolute', top: 4, bottom: 4, left: '50%', transform: 'translateX(-50%)', width: 2, background: TL_VIOLET }} />
-              <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 8, height: 8, borderRadius: '50%', background: TL_VIOLET }} />
-              <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 8, height: 8, borderRadius: '50%', background: TL_VIOLET }} />
-              <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 8, height: 8, borderRadius: '50%', background: TL_VIOLET }} />
+              <div style={{ position: 'absolute', top: 4, bottom: 4, left: '50%', transform: 'translateX(-50%)', width: 2, background: TL_ACTIVE }} />
+              <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 8, height: 8, borderRadius: '50%', background: TL_ACTIVE }} />
+              <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 8, height: 8, borderRadius: '50%', background: TL_ACTIVE }} />
+              <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 8, height: 8, borderRadius: '50%', background: TL_ACTIVE }} />
             </div>
 
           </div>
