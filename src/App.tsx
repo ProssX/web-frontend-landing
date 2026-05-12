@@ -5,6 +5,7 @@ import Solucion from './components/Solucion'
 import ComoFunciona from './components/ComoFunciona'
 import PorQueProocess from './components/PorQueProocess'
 import CTAForm from './components/CTAForm'
+import FAQ from './components/FAQ'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <ComoFunciona />
       <PorQueProocess />
       <CTAForm />
+      <FAQ />
     </>
   )
 }
