@@ -41,7 +41,7 @@ EXPOSE 5174
 
 # Healthcheck for Coolify
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:5173 || exit 1
+    CMD curl -f http://localhost:5174 || exit 1
 
 # Start serve to host the SPA
 CMD ["serve", "-s", "dist", "-l", "5174"]
