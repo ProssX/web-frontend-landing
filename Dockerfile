@@ -37,11 +37,11 @@ RUN npm install -g serve
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
 # Expose port for serve
-EXPOSE 5173
+EXPOSE 5174
 
 # Healthcheck for Coolify
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:5173 || exit 1
 
 # Start serve to host the SPA
-CMD ["serve", "-s", "dist", "-l", "5173"]
+CMD ["serve", "-s", "dist", "-l", "5174"]
