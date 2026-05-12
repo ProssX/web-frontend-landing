@@ -26,12 +26,12 @@ const inputStyle: React.CSSProperties = {
 
 export default function CTAForm() {
   const sectionRef = useRef<HTMLElement>(null)
-  const buttonRef  = useRef<HTMLButtonElement>(null)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
   const [team, setTeam] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -123,7 +123,7 @@ export default function CTAForm() {
         {/* Video column */}
         <div className="cta-video-col">
           <LogoAnimation
-            triggerRef={buttonRef}
+            isHovered={isHovered}
             isSubmitted={status === 'success'}
           />
         </div>
@@ -305,7 +305,6 @@ export default function CTAForm() {
               </div>
 
               <button
-                ref={buttonRef}
                 type="submit"
                 disabled={status === 'loading'}
                 style={{
@@ -320,8 +319,14 @@ export default function CTAForm() {
                   cursor: status === 'loading' ? 'wait' : 'pointer',
                   transition: 'opacity 0.18s ease',
                 }}
-                onMouseEnter={(e) => { if (status !== 'loading') e.currentTarget.style.opacity = '0.88' }}
-                onMouseLeave={(e) => { e.currentTarget.style.opacity = '1' }}
+                onMouseEnter={(e) => {
+                  if (status !== 'loading') e.currentTarget.style.opacity = '0.88'
+                  setIsHovered(true)
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '1'
+                  setIsHovered(false)
+                }}
               >
                 {status === 'loading' ? 'Enviando…' : 'Quiero verlo'}
               </button>
