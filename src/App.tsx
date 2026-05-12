@@ -1,23 +1,28 @@
+import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Problema from './components/Problema'
-import Solucion from './components/Solucion'
-import ComoFunciona from './components/ComoFunciona'
-import PorQueProocess from './components/PorQueProocess'
-import CTAForm from './components/CTAForm'
-import FAQ from './components/FAQ'
+import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import FAQPage from './pages/FAQPage'
+import SobreNosotrosPage from './pages/SobreNosotrosPage'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 
 export default function App() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Problema />
-      <Solucion />
-      <ComoFunciona />
-      <PorQueProocess />
-      <CTAForm />
-      <FAQ />
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/sobre-nosotros" element={<SobreNosotrosPage />} />
+      </Routes>
+      <Footer />
     </>
   )
 }
