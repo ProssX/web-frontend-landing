@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "Read(//Users/jose/Desktop/Proocess/repositorios/**)",
+      "Bash(npx create-vite@latest web-frontend-temp --template react-ts)",
+      "Bash(cp -r web-frontend-temp/. web-frontend-landing/)",
+      "Bash(rm -rf web-frontend-temp)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(cp \"/Users/jose/Desktop/Proocess/Branding/ISOLOGOTIPO PNG/SVG/Asset 1.svg\" /Users/jose/Desktop/Proocess/repositorios/web-frontend-landing/src/assets/isologotipo.svg && echo \"ok\")",
+      "Bash(pkill -f \"vite --port 5173\")",
+      "Bash(npx tsc *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174)",
+      "Bash(git branch *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git checkout *)",
+      "Bash(git merge redesign/solucion-como-funciona-carousel --no-ff -m ' *)",
+      "Bash(git -C /Users/jose/Desktop/Proocess/repositorios/web-frontend-landing log --oneline -15)",
+      "Bash(git -C /Users/jose/Desktop/Proocess/repositorios/web-frontend-landing diff HEAD --stat)",
+      "Bash(git -C /Users/jose/Desktop/Proocess/repositorios/web-frontend-landing diff HEAD -- src/components/Hero.tsx src/components/ComoFunciona.tsx src/components/Solucion.tsx)",
+      "Bash(git -C /Users/jose/Desktop/Proocess/repositorios/web-frontend-landing diff HEAD -- src/components/PorQueProocess.tsx)",
+      "Bash(git -C /Users/jose/Desktop/Proocess/repositorios/web-frontend-landing diff HEAD -- src/index.css)"
+    ]
+  }
+}
