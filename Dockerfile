@@ -1,31 +1,47 @@
-# Etapa 1: Construcción (Build)
-FROM node:22-alpine AS build
+# Build stage
+FROM node:22-slim AS builder
 
+# Set working directory
 WORKDIR /app
 
-# Copiamos solo los archivos de dependencias primero para aprovechar la caché de Docker
-COPY package*.json ./
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
 
-# Forzamos la instalación limpia para Linux
+# Install dependencies
 RUN npm install
 
-# Copiamos el resto del código
+# Copy all files
 COPY . .
 
-# Compilamos la aplicación para producción
+# Build the app
 RUN npm run build
 
-# Etapa 2: Producción (Serve)
-FROM nginx:alpine
+# Runner stage
+FROM node:22-slim AS runner
 
-# Copiamos nuestra configuración personalizada de Nginx
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Set working directory
+WORKDIR /app
 
-# Copiamos los archivos estáticos generados en la etapa anterior (desde /app/dist)
-COPY --from=build /app/dist /usr/share/nginx/html
+# Copy built files and necessary configs from builder stage
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/public ./public
 
-# Exponemos el puerto 80
-EXPOSE 80
+# Install production dependencies only
+RUN npm install --omit=dev
 
-# Comando para iniciar Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Install serve globally
+RUN npm install -g serve
+
+# Install curl for healthcheck
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Expose port for serve
+EXPOSE 5173
+
+# Healthcheck for Coolify
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:5173 || exit 1
+
+# Start serve to host the SPA
+CMD ["serve", "-s", "dist", "-l", "5173"]
