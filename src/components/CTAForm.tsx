@@ -99,6 +99,14 @@ export default function CTAForm() {
           from { opacity: 0; transform: translateY(16px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        #cta-form { display: flex; flex-direction: row; }
+        .cta-video-col { width: 40%; padding: 10%; }
+        .cta-form-col  { width: 60%; }
+        @media (max-width: 768px) {
+          #cta-form { flex-direction: column-reverse; }
+          .cta-video-col { width: 100%; min-height: 280px; padding: 20%; }
+          .cta-form-col  { width: 100%; }
+        }
       `}</style>
 
       <section
@@ -106,13 +114,39 @@ export default function CTAForm() {
         id="cta-form"
         style={{
           position: 'relative',
-          background: 'var(--color-bg-dark)',
           color: 'var(--color-text-dark)',
-          paddingTop: '7rem',
-          paddingBottom: '7rem',
           overflow: 'hidden',
         }}
       >
+        {/* Video column */}
+        <div
+          className="cta-video-col"
+          style={{
+            background: '#000',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            src="/catch-the-logo.mp4"
+            style={{ height: '100%', width: 'auto', display: 'block', objectFit: 'contain' }}
+          />
+        </div>
+
+        {/* Form column */}
+        <div
+          className="cta-form-col"
+          style={{
+            background: 'var(--color-bg-dark)',
+            position: 'relative',
+            padding: '7rem 4rem',
+          }}
+        >
         <div aria-hidden="true" style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
           background: `
@@ -129,7 +163,6 @@ export default function CTAForm() {
         }} />
 
         <div
-          className="container"
           style={{
             position: 'relative',
             display: 'flex',
@@ -137,7 +170,7 @@ export default function CTAForm() {
             alignItems: 'center',
             textAlign: 'center',
             gap: '2rem',
-            maxWidth: '560px',
+            maxWidth: '520px',
             marginLeft: 'auto',
             marginRight: 'auto',
           }}
@@ -312,6 +345,7 @@ export default function CTAForm() {
               </p>
             </form>
           )}
+        </div>
         </div>
       </section>
     </>
