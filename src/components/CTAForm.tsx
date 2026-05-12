@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import emailjs from '@emailjs/browser'
+import LogoAnimation from './LogoAnimation'
 
 const EMAILJS_SERVICE  = 'service_hcy9th2'
 const EMAILJS_TEMPLATE = 'template_neft65k'
@@ -25,6 +26,7 @@ const inputStyle: React.CSSProperties = {
 
 export default function CTAForm() {
   const sectionRef = useRef<HTMLElement>(null)
+  const buttonRef  = useRef<HTMLButtonElement>(null)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [company, setCompany] = useState('')
@@ -100,11 +102,11 @@ export default function CTAForm() {
           to   { opacity: 1; transform: translateY(0); }
         }
         #cta-form { display: flex; flex-direction: row; }
-        .cta-video-col { width: 40%; padding: 10%; }
+        .cta-video-col { width: 40%; position: relative; overflow: hidden; background: #000; }
         .cta-form-col  { width: 60%; }
         @media (max-width: 768px) {
           #cta-form { flex-direction: column-reverse; }
-          .cta-video-col { width: 100%; min-height: 280px; padding: 20%; }
+          .cta-video-col { width: 100%; min-height: 320px; }
           .cta-form-col  { width: 100%; }
         }
       `}</style>
@@ -119,22 +121,10 @@ export default function CTAForm() {
         }}
       >
         {/* Video column */}
-        <div
-          className="cta-video-col"
-          style={{
-            background: '#000',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <video
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            src="/catch-the-logo.mp4"
-            style={{ height: '100%', width: 'auto', display: 'block', objectFit: 'contain' }}
+        <div className="cta-video-col">
+          <LogoAnimation
+            triggerRef={buttonRef}
+            isSubmitted={status === 'success'}
           />
         </div>
 
@@ -149,10 +139,7 @@ export default function CTAForm() {
         >
         <div aria-hidden="true" style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: `
-            radial-gradient(ellipse 60% 50% at 50% 100%, rgba(var(--color-primary-rgb), 0.07) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 35% at 20% 20%, rgba(var(--color-accent-lavender-rgb), 0.03) 0%, transparent 65%)
-          `,
+          background: `radial-gradient(ellipse 40% 35% at 20% 20%, rgba(var(--color-accent-lavender-rgb), 0.03) 0%, transparent 65%)`,
         }} />
         <div aria-hidden="true" style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
@@ -198,8 +185,9 @@ export default function CTAForm() {
             data-delay="80"
             style={{
               fontSize: 'clamp(2rem, 4.5vw, 3.25rem)',
-              fontFamily: "'Fraunces', Georgia, serif",
-              fontWeight: 700,
+              fontFamily: 'var(--font-display-em)',
+              fontStyle: 'italic',
+              fontWeight: 400,
               color: 'var(--color-text-dark)',
               lineHeight: 1.1,
               letterSpacing: '-0.03em',
@@ -317,6 +305,7 @@ export default function CTAForm() {
               </div>
 
               <button
+                ref={buttonRef}
                 type="submit"
                 disabled={status === 'loading'}
                 style={{

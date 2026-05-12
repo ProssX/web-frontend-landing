@@ -278,6 +278,7 @@ export default function ComoFunciona() {
             </span>
 
             <h2 style={{
+              fontFamily: 'var(--font-display)',
               fontSize: 'clamp(1.875rem, 3.5vw, 2.875rem)',
               fontWeight: 700,
               color: 'var(--color-text-dark)',

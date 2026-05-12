@@ -130,6 +130,7 @@ export default function Solucion() {
             </span>
 
             <h2 style={{
+              fontFamily: 'var(--font-display)',
               fontSize: 'clamp(1.875rem, 3.5vw, 2.875rem)',
               fontWeight: 800,
               color: 'var(--color-text-dark)',
