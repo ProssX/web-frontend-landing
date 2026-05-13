@@ -48,7 +48,7 @@ export default function Navbar() {
         <nav
           className={[
             'hidden md:flex items-center gap-1 px-2 py-2 rounded-pill border transition-all duration-300',
-            scrolled
+            scrolled || !isHome
               ? 'bg-ink/80 border-cream/10 backdrop-blur-xl shadow-lg'
               : 'bg-cream/[.06] border-cream/[.08] backdrop-blur-md',
           ].join(' ')}
@@ -67,7 +67,7 @@ export default function Navbar() {
             to="/faq"
             className="px-4 py-2 text-sm font-medium text-cream/60 hover:text-cream rounded-pill transition-colors duration-150 whitespace-nowrap"
           >
-            FAQ
+            Preguntas frecuentes
           </Link>
 
           {/* Separador */}
@@ -87,7 +87,7 @@ export default function Navbar() {
         <button
           className={[
             'flex md:hidden flex-col gap-[5px] p-2.5 rounded-xl border transition-all duration-300',
-            scrolled
+            scrolled || !isHome
               ? 'bg-ink/80 border-cream/10 backdrop-blur-xl'
               : 'bg-cream/[.06] border-cream/[.08] backdrop-blur-md',
           ].join(' ')}
@@ -119,7 +119,7 @@ export default function Navbar() {
             onClick={closeMenu}
             className="py-2.5 px-2 text-sm font-medium text-cream/60 hover:text-cream border-b border-cream/[.05] last:border-0 transition-colors"
           >
-            FAQ
+            Preguntas frecuentes
           </Link>
           <a
             href={anchorHref('#cta-form')}
