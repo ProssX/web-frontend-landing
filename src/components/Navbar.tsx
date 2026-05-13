@@ -5,7 +5,6 @@ import logo from '../assets/isologotipo-coral.png'
 const anchorLinks = [
   { label: 'Producto',      hash: '#solucion'      },
   { label: 'Cómo funciona', hash: '#como-funciona' },
-  { label: 'Hablemos',      hash: '#contacto'       },
 ]
 
 export default function Navbar() {
