@@ -87,17 +87,6 @@ export default function Footer() {
             >
               FAQ
             </Link>
-            <Link
-              to="/sobre-nosotros"
-              style={{
-                fontSize: '0.875rem',
-                color: 'rgba(var(--color-cream-rgb), 0.6)',
-                textDecoration: 'none',
-                transition: 'color 150ms',
-              }}
-            >
-              Sobre nosotros
-            </Link>
           </div>
 
           {/* Redes */}
