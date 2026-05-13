@@ -89,22 +89,26 @@ export default function PorQueProocessMobile({ rows }: { rows: Row[] }) {
           if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1))
         }}
       >
-        {/* Column header — swipeable */}
-        <div style={{ overflow: 'hidden', borderBottom: `1px solid ${LEFT_BDR}` }}>
-          <div style={trackStyle}>
-            {COLS.map((col) => (
-              <div
-                key={col.key}
-                style={{
-                  ...slideStyle,
-                  padding: '1.125rem 1.25rem 1rem',
-                  display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
-                  ...(col.isProocess
-                    ? { background: ACCENT_BG, borderTop: '2px solid var(--color-accent-blue)' }
-                    : {}),
-                }}
-              >
-                <div>
+        {/* Column header: name slides, arrows stay fixed */}
+        <div style={{
+          display: 'flex', alignItems: 'center',
+          borderBottom: `1px solid ${LEFT_BDR}`,
+          background: COLS[current].isProocess ? ACCENT_BG : CARD_BG,
+          borderTop: COLS[current].isProocess ? '2px solid var(--color-accent-blue)' : undefined,
+          transition: 'background 0.38s ease, border-top-color 0.38s ease',
+        }}>
+          {/* Swipeable name + sub */}
+          <div style={{
+            flex: 1, overflow: 'hidden',
+            maskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
+          }}>
+            <div style={trackStyle}>
+              {COLS.map((col) => (
+                <div
+                  key={col.key}
+                  style={{ ...slideStyle, padding: '1.125rem 0 1rem 1.25rem' }}
+                >
                   <div style={{
                     fontFamily: 'var(--font-display)',
                     fontSize: '1rem', fontWeight: 700,
@@ -131,14 +135,14 @@ export default function PorQueProocessMobile({ rows }: { rows: Row[] }) {
                     </span>
                   )}
                 </div>
+              ))}
+            </div>
+          </div>
 
-                {/* Arrows */}
-                <div style={{ display: 'flex', gap: '0.375rem', flexShrink: 0 }}>
-                  <ArrowBtn dir="prev" onClick={() => goTo(current - 1)} disabled={current === 0} />
-                  <ArrowBtn dir="next" onClick={() => goTo(current + 1)} disabled={current === COLS.length - 1} />
-                </div>
-              </div>
-            ))}
+          {/* Fixed arrows — no se mueven */}
+          <div style={{ display: 'flex', gap: '0.375rem', padding: '0 1.125rem', flexShrink: 0 }}>
+            <ArrowBtn dir="prev" onClick={() => goTo(current - 1)} disabled={current === 0} />
+            <ArrowBtn dir="next" onClick={() => goTo(current + 1)} disabled={current === COLS.length - 1} />
           </div>
         </div>
 
