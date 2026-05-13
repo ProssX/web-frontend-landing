@@ -1,13 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import PorQueProocessMobile, { type Rating, type Row } from './PorQueProocessMobile'
 
-type Rating = 'pos' | 'mid' | 'neg'
-
-const ROWS: {
-  label: string
-  trad: Rating; tradText: string
-  bpm: Rating; bpmText: string
-  proocess: Rating; proocText: string
-}[] = [
+const ROWS: Row[] = [
   { label: 'Velocidad',        trad: 'neg', tradText: 'Meses',          bpm: 'mid', bpmText: 'Semanas',        proocess: 'pos', proocText: 'Horas'      },
   { label: 'Costo',            trad: 'neg', tradText: 'Alto',            bpm: 'neg', bpmText: 'Licencias + IT', proocess: 'pos', proocText: 'Eficiente'  },
   { label: 'Escalabilidad',    trad: 'neg', tradText: 'Baja',            bpm: 'mid', bpmText: 'Con IT',          proocess: 'pos', proocText: 'Alta'       },
@@ -40,20 +34,12 @@ function Badge({ type, children }: { type: Rating; children: string }) {
   )
 }
 
-type TabKey = 'trad' | 'bpm'
-
-const TABS: Record<TabKey, { label: string; sub: string }> = {
-  trad: { label: 'Consultoría', sub: 'tradicional' },
-  bpm:  { label: 'Software BPM', sub: 'de modelado' },
-}
-
 const PROOCESS_BG     = 'rgba(var(--color-accent-blue-rgb), 0.35)'
 const PROOCESS_BORDER = 'rgba(var(--color-ink-rgb), 0.12)'
 const PROOCESS_ACCENT = 'var(--color-accent-blue)'
 
 export default function PorQueProocess() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [activeTab, setActiveTab] = useState<TabKey>('trad')
 
   useEffect(() => {
     const section = sectionRef.current
@@ -266,136 +252,9 @@ export default function PorQueProocess() {
             </table>
           </div>
 
-          {/* ── MOBILE TAB SWITCHER ── */}
+          {/* ── MOBILE ── */}
           <div className="pq-mobile">
-            {/* Tabs bar */}
-            <div style={{
-              display: 'flex', gap: '0.375rem',
-              marginBottom: '1.5rem',
-              background: 'rgba(var(--color-ink-rgb), 0.06)',
-              borderRadius: '0.625rem',
-              padding: '0.3rem',
-              border: '1px solid rgba(var(--color-ink-rgb), 0.08)',
-            }}>
-              {(['trad', 'bpm'] as TabKey[]).map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  style={{
-                    flex: 1,
-                    padding: '0.625rem 0.75rem',
-                    fontFamily: 'var(--font-family)',
-                    fontSize: '0.8125rem',
-                    fontWeight: 600,
-                    color: activeTab === tab ? 'var(--color-text)' : 'rgba(var(--color-ink-rgb), 0.3)',
-                    background: activeTab === tab ? 'var(--color-surface)' : 'none',
-                    border: 'none',
-                    borderRadius: '0.375rem',
-                    cursor: 'pointer',
-                    transition: 'color 0.18s ease, background 0.18s ease',
-                    textAlign: 'center',
-                    lineHeight: 1.3,
-                  }}
-                >
-                  {TABS[tab].label}
-                  <small style={{ display: 'block', fontSize: '0.6875rem', fontWeight: 400, marginTop: '0.1rem' }}>
-                    {TABS[tab].sub}
-                  </small>
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile table */}
-            <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: 0 }}>
-                <thead>
-                  <tr>
-                    <th style={{ width: '36%', padding: '0 0 1.125rem', textAlign: 'left' }} />
-                    <th style={{
-                      padding: '0 0.75rem 1.125rem', textAlign: 'center',
-                      fontSize: '0.75rem', fontWeight: 600,
-                      color: 'rgba(var(--color-ink-rgb), 0.4)',
-                      letterSpacing: '0.04em', textTransform: 'uppercase',
-                    }}>
-                      {TABS[activeTab].label}<br />
-                      <span style={{ fontSize: '0.6875rem', fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>
-                        {TABS[activeTab].sub}
-                      </span>
-                    </th>
-                    <th style={{
-                      padding: '0 0.75rem 0', textAlign: 'center',
-                      background: PROOCESS_BG,
-                      borderTop: `2px solid ${PROOCESS_ACCENT}`,
-                      borderLeft: `1px solid ${PROOCESS_BORDER}`,
-                      borderRight: `1px solid ${PROOCESS_BORDER}`,
-                      borderRadius: '0.5rem 0.5rem 0 0',
-                    }}>
-                      <span style={{
-                        display: 'block',
-                        paddingTop: '0.875rem',
-                        fontFamily: 'var(--font-display)',
-                        fontSize: '0.875rem', fontWeight: 700,
-                        color: 'var(--color-primary)',
-                        textTransform: 'none',
-                        letterSpacing: '-0.01em',
-                      }}>
-                        Proocess
-                      </span>
-                      <span style={{
-                        display: 'inline-flex',
-                        marginTop: '0.3rem',
-                        marginBottom: '0.75rem',
-                        fontSize: '0.5625rem', fontWeight: 700,
-                        letterSpacing: '0.1em', textTransform: 'uppercase',
-                        background: 'rgba(var(--color-accent-blue-rgb), 0.5)',
-                        color: 'var(--color-text)',
-                        border: '1px solid rgba(var(--color-ink-rgb), 0.10)',
-                        borderRadius: '9999px',
-                        padding: '0.15rem 0.5rem',
-                      }}>
-                        Recomendado
-                      </span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {ROWS.map((row, i) => {
-                    const isLast = i === ROWS.length - 1
-                    const cellBase: React.CSSProperties = {
-                      padding: '0.875rem 0.75rem',
-                      textAlign: 'center',
-                      verticalAlign: 'middle',
-                      borderBottom: isLast ? 'none' : '1px solid var(--pq-row-sep)',
-                    }
-                    return (
-                      <tr key={row.label}>
-                        <td style={{
-                          ...cellBase,
-                          textAlign: 'left', paddingLeft: 0,
-                          fontSize: '0.875rem', fontWeight: 500,
-                          color: 'rgba(var(--color-ink-rgb), 0.88)',
-                        }}>
-                          {row.label}
-                        </td>
-                        <td style={cellBase}>
-                          <Badge type={row[activeTab]}>{row[`${activeTab}Text`]}</Badge>
-                        </td>
-                        <td style={{
-                          ...cellBase,
-                          background: PROOCESS_BG,
-                          borderLeft: `1px solid rgba(var(--color-accent-blue-rgb), 0.13)`,
-                          borderRight: `1px solid rgba(var(--color-accent-blue-rgb), 0.13)`,
-                          borderBottom: isLast
-                            ? `2px solid rgba(var(--color-accent-blue-rgb), 0.28)`
-                            : '1px solid rgba(var(--color-accent-blue-rgb), 0.08)',
-                          borderRadius: isLast ? '0 0 0.5rem 0.5rem' : 0,
-                        }}>
-                          <Badge type={row.proocess}>{row.proocText}</Badge>
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-            </table>
+            <PorQueProocessMobile rows={ROWS} />
           </div>
 
         </div>
