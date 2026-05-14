@@ -191,12 +191,18 @@ export default function Solucion() {
               borderRadius: '0.875rem',
               overflow: 'hidden',
               aspectRatio: '4 / 3',
+              position: 'relative',
             }}>
               <img
                 src="/solucion-hero.jpeg"
                 alt="Usuaria trabajando con Proocess"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
+              <div aria-hidden="true" style={{
+                position: 'absolute', inset: 0,
+                background: 'rgba(34, 40, 48, 0.55)',
+                mixBlendMode: 'multiply',
+              }} />
             </div>
           </div>
         </div>
