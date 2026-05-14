@@ -188,65 +188,15 @@ export default function Solucion() {
 
           <div className="sol-video-col" data-reveal data-delay="150">
             <div style={{
-              position: 'relative',
               borderRadius: '0.875rem',
-              background: 'var(--color-video-bg)',
-              border: '1px solid rgba(var(--color-accent-blue-rgb), 0.10)',
               overflow: 'hidden',
               aspectRatio: '4 / 3',
-              boxShadow: '0 0 0 1px rgba(var(--color-accent-blue-rgb), 0.05)',
             }}>
-              <div aria-hidden="true" style={{
-                position: 'absolute', inset: 0,
-                backgroundImage: `radial-gradient(circle, rgba(var(--color-accent-lavender-rgb), 0.07) 1px, transparent 1px)`,
-                backgroundSize: '24px 24px',
-              }} />
-
-              <div style={{
-                position: 'absolute', inset: 0,
-                display: 'flex', flexDirection: 'column',
-                alignItems: 'center', justifyContent: 'center',
-                gap: '0.625rem',
-              }}>
-                <button
-                  aria-label="Reproducir demo"
-                  style={{
-                    width: 58, height: 58, borderRadius: '50%',
-                    background: 'var(--color-primary)',
-                    color: 'var(--color-surface)', border: 'none', cursor: 'pointer',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    boxShadow: '0 0 0 10px var(--color-primary-tint)',
-                    marginBottom: '0.375rem',
-                    transition: 'transform 0.18s ease, box-shadow 0.18s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.08)'
-                    e.currentTarget.style.boxShadow = '0 0 0 16px rgba(var(--color-primary-rgb), 0.07)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)'
-                    e.currentTarget.style.boxShadow = '0 0 0 10px var(--color-primary-tint)'
-                  }}
-                >
-                  <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                    <path d="M9 6.5v15l12-7.5L9 6.5z" fill="currentColor" />
-                  </svg>
-                </button>
-
-                <span style={{
-                  fontSize: '0.8125rem', fontWeight: 600,
-                  color: 'rgba(var(--color-cream-rgb), 0.4)',
-                }}>
-                  Demo · 30–60s
-                </span>
-                <span style={{
-                  fontSize: '0.625rem', fontWeight: 700,
-                  color: 'rgba(var(--color-accent-blue-rgb), 0.4)',
-                  letterSpacing: '0.1em', textTransform: 'uppercase',
-                }}>
-                  Flujo completo
-                </span>
-              </div>
+              <img
+                src="/solucion-hero.jpeg"
+                alt="Usuaria trabajando con Proocess"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
             </div>
           </div>
         </div>
