@@ -100,8 +100,8 @@ export default function PorQueProocessMobile({ rows }: { rows: Row[] }) {
           {/* Swipeable name + sub */}
           <div style={{
             flex: 1, overflow: 'hidden',
-            maskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 18%, black 82%, transparent)',
+            maskImage: 'linear-gradient(to right, black 90%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, black 90%, transparent)',
           }}>
             <div style={trackStyle}>
               {COLS.map((col) => (
@@ -121,19 +121,6 @@ export default function PorQueProocessMobile({ rows }: { rows: Row[] }) {
                   <div style={{ fontSize: '0.75rem', color: 'rgba(var(--color-ink-rgb), 0.4)' }}>
                     {col.sub}
                   </div>
-                  {col.isProocess && (
-                    <span style={{
-                      display: 'inline-flex', marginTop: '0.4rem',
-                      fontSize: '0.5625rem', fontWeight: 700,
-                      letterSpacing: '0.1em', textTransform: 'uppercase',
-                      background: 'rgba(var(--color-accent-blue-rgb), 0.6)',
-                      border: '1px solid rgba(var(--color-ink-rgb), 0.10)',
-                      borderRadius: '9999px',
-                      padding: '0.2rem 0.6rem',
-                    }}>
-                      Recomendado
-                    </span>
-                  )}
                 </div>
               ))}
             </div>
@@ -146,52 +133,48 @@ export default function PorQueProocessMobile({ rows }: { rows: Row[] }) {
           </div>
         </div>
 
-        {/* Rows */}
-        <div style={{ display: 'flex' }}>
-          {/* Left: labels — fixed */}
-          <div style={{ flex: '0 0 42%', borderRight: `1px solid ${LEFT_BDR}` }}>
-            {rows.map((row, i) => (
-              <div
-                key={row.label}
-                style={{
-                  padding: '0.9375rem 1rem 0.9375rem 1.25rem',
-                  fontSize: '0.875rem', fontWeight: 500,
-                  color: 'rgba(var(--color-ink-rgb), 0.7)',
-                  letterSpacing: '-0.01em',
-                  borderBottom: i < rows.length - 1 ? `1px solid ${ROW_SEP}` : 'none',
-                  display: 'flex', alignItems: 'center',
-                  minHeight: 52,
-                }}
-              >
-                {row.label}
-              </div>
-            ))}
-          </div>
+        {/* Rows: cada fila es un único flex container → alturas siempre sincronizadas */}
+        {rows.map((row, i) => (
+          <div
+            key={row.label}
+            style={{
+              display: 'flex',
+              borderBottom: i < rows.length - 1 ? `1px solid ${ROW_SEP}` : 'none',
+            }}
+          >
+            {/* Label — fijo */}
+            <div style={{
+              flex: '0 0 42%',
+              padding: '0.9375rem 1rem 0.9375rem 1.25rem',
+              fontSize: '0.875rem', fontWeight: 500,
+              color: 'rgba(var(--color-ink-rgb), 0.7)',
+              letterSpacing: '-0.01em',
+              borderRight: `1px solid ${LEFT_BDR}`,
+              display: 'flex', alignItems: 'center',
+            }}>
+              {row.label}
+            </div>
 
-          {/* Right: values — swipeable */}
-          <div style={{ flex: 1, overflow: 'hidden' }}>
-            <div style={trackStyle}>
-              {COLS.map(col => (
-                <div key={col.key} style={slideStyle}>
-                  {rows.map((row, i) => (
-                    <div
-                      key={row.label}
-                      style={{
-                        padding: '0.9375rem 1rem',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        borderBottom: i < rows.length - 1 ? `1px solid ${ROW_SEP}` : 'none',
-                        minHeight: 52,
-                        ...(col.isProocess ? { background: PROOCESS_ROW_BG } : {}),
-                      }}
-                    >
-                      <Chip type={row[col.key]}>{row[col.textKey]}</Chip>
-                    </div>
-                  ))}
-                </div>
-              ))}
+            {/* Valor — deslizable, misma altura que su label */}
+            <div style={{ flex: 1, overflow: 'hidden' }}>
+              <div style={trackStyle}>
+                {COLS.map(col => (
+                  <div
+                    key={col.key}
+                    style={{
+                      ...slideStyle,
+                      padding: '0.9375rem 1rem',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      ...(col.isProocess ? { background: PROOCESS_ROW_BG } : {}),
+                    }}
+                  >
+                    <Chip type={row[col.key]}>{row[col.textKey]}</Chip>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
 
       {/* Dots */}
