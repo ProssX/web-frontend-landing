@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../assets/isologotipo-coral.png'
+import logo from '../assets/isologotipo-coral.svg'
 
 const navLinks = [
   { label: 'Producto',      hash: '#solucion'      },
@@ -34,7 +34,7 @@ export default function Footer() {
         {/* Logo + tagline */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <Link to="/" aria-label="Proocess - Inicio">
-            <img src={logo} alt="Proocess" style={{ height: '2.25rem', width: 'auto' }} />
+            <img src={logo} alt="Proocess" style={{ height: '1.75rem', width: 'auto' }} />
           </Link>
           <p style={{
             fontSize: '0.875rem',

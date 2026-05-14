@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../assets/isologotipo-coral.png'
+import logo from '../assets/isologotipo-coral.svg'
 
 const anchorLinks = [
   { label: 'Producto',      hash: '#solucion'      },
@@ -41,7 +41,12 @@ export default function Navbar() {
           onClick={closeMenu}
           className="flex items-center"
         >
-          <img src={logo} alt="Proocess" className="h-11 w-auto" />
+          <img
+            src={logo}
+            alt="Proocess"
+            className="h-7 w-auto transition-opacity duration-300"
+            style={{ opacity: scrolled ? 0.45 : 1 }}
+          />
         </Link>
 
         {/* Cápsula flotante — desktop */}
