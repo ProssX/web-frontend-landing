@@ -136,7 +136,7 @@ export default function LogoAnimation({ isHovered, isSubmitted }: LogoAnimationP
           position: 'absolute', 
           inset: 0, 
           pointerEvents: 'none',
-          background: 'linear-gradient(to right, #000, transparent, #000);' 
+          background: 'linear-gradient(to right, #000, transparent, #000)'
         }} 
       />
     </div>
